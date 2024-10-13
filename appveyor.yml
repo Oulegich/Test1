@@ -1,0 +1,17 @@
+image: Ubuntu2004
+stack: node 18
+branches:
+  only:
+    - master
+cache: node_modules
+environment:
+  matrix:
+    - nodejs_version: "18"
+platform:
+  - x64
+build: off
+install:
+  - npm install --save-dev eslint eslint-plugin-jest@latest
+  - npm install --save-dev @babel/core @babel/cli @babel/preset-env
+test_script:
+  - npm run lint && npm test
